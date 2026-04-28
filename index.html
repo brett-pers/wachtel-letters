@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wachtel Letters — Kraków, 1934–1939</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:       #f5f0e8;
+      --cream-dark:  #ede6d6;
+      --parchment:   #e8dfc8;
+      --sepia-light: #c8a97a;
+      --sepia:       #8b6f47;
+      --sepia-dark:  #5c4433;
+      --ink:         #2a1f15;
+      --ink-soft:    #4a3728;
+      --rust:        #8b3a2a;
+      --rust-light:  #b85a42;
+      --gold:        #a07830;
+      --gold-light:  #c8a060;
+      --shadow:      rgba(42,31,21,0.15);
+      --shadow-deep: rgba(42,31,21,0.30);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--parchment) 50%, var(--cream-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(160,120,48,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(139,63,42,0.06) 0%, transparent 70%);
+    }
+
+    .hero-ornament {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.5s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sepia-dark);
+    }
+
+    .hero-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--sepia);
+      letter-spacing: 0.06em;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.8s forwards;
+    }
+
+    .hero-rule {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 1s forwards;
+    }
+
+    .hero-intro {
+      max-width: 620px;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      line-height: 1.85;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 1.2s forwards;
+    }
+
+    .hero-intro strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--rust);
+    }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: var(--sepia-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 2s forwards;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--sepia-light), transparent);
+      animation: pulse 2s ease infinite;
+    }
+
+    /* ─── NAV STRIP ─── */
+    .nav-strip {
+      background: var(--sepia-dark);
+      padding: 0.6rem 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px var(--shadow-deep);
+    }
+
+    .nav-strip a {
+      color: var(--cream-dark);
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-strip a:hover { color: var(--gold-light); }
+
+    .nav-dot { color: var(--sepia-light); font-size: 0.5rem; }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 60px; height: 1px;
+      background: var(--sepia-light);
+      margin: 2rem 0;
+    }
+
+    /* ─── FAMILY CONTEXT ─── */
+    .context-section {
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--parchment) 100%);
+      border-top: 3px solid var(--sepia-light);
+      border-bottom: 3px solid var(--sepia-light);
+      padding: 5rem 2rem;
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 900px;
+      margin: 2rem auto 0;
+    }
+
+    @media (max-width: 680px) { .context-grid { grid-template-columns: 1fr; } }
+
+    .context-card {
+      border-left: 2px solid var(--sepia-light);
+      padding-left: 1.5rem;
+    }
+
+    .context-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--sepia-dark);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .context-card p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    .killed { color: var(--rust); font-weight: 600; }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section {
+      background: var(--cream);
+      padding: 5rem 2rem;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: 3rem auto 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 140px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--sepia-light) 5%, var(--sepia-light) 95%, transparent);
+    }
+
+    @media (max-width: 600px) {
+      .timeline::before { left: 0; }
+    }
+
+    .timeline-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--sepia);
+      letter-spacing: 0.05em;
+      text-align: right;
+      width: 120px;
+      padding-right: 30px;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .timeline-year::after {
+      content: '';
+      position: absolute;
+      right: -5px; top: 50%;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--sepia-light);
+      border: 2px solid var(--cream);
+      transform: translateY(-50%);
+    }
+
+    /* ─── LETTER CARDS ─── */
+    .letters-section {
+      padding: 5rem 2rem;
+      background: var(--cream-dark);
+    }
+
+    .letters-grid {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .letter-card {
+      background: var(--cream);
+      border: 1px solid var(--sepia-light);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 3px 3px 12px var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .letter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 5px 8px 24px var(--shadow-deep);
+    }
+
+    .letter-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sepia-light), var(--gold), var(--sepia-light));
+    }
+
+    .card-date {
+      padding: 1.25rem 1.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .card-title {
+      padding: 0.4rem 1.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .card-from {
+      padding: 0.3rem 1.5rem 0;
+      font-size: 0.88rem;
+      color: var(--sepia);
+      font-style: italic;
+    }
+
+    .card-summary {
+      padding: 0.85rem 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      border-top: 1px solid var(--parchment);
+      margin-top: 0.85rem;
+    }
+
+    .card-footer {
+      padding: 0.75rem 1.5rem;
+      background: var(--parchment);
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--sepia-light);
+      color: var(--sepia-dark);
+      border-radius: 2px;
+    }
+
+    .card-tag.killed-tag {
+      border-color: var(--rust);
+      color: var(--rust);
+    }
+
+    /* ─── MODAL ─── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(42,31,21,0.75);
+      backdrop-filter: blur(4px);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--cream);
+      max-width: 820px;
+      width: 100%;
+      border-radius: 2px;
+      box-shadow: 0 20px 60px var(--shadow-deep);
+      position: relative;
+      margin: auto;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--sepia); font-size: 1.5rem; line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--ink); }
+
+    .modal-header {
+      background: var(--sepia-dark);
+      color: var(--cream);
+      padding: 2rem 2.5rem;
+    }
+
+    .modal-meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-from {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--sepia-light);
+    }
+
+    .modal-tabs {
+      display: flex; border-bottom: 1px solid var(--parchment);
+      background: var(--cream-dark);
+    }
+
+    .modal-tab {
+      padding: 0.85rem 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none; background: none; cursor: pointer;
+      color: var(--sepia);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .modal-tab.active {
+      color: var(--ink);
+      border-bottom-color: var(--gold);
+      font-weight: 600;
+    }
+
+    .modal-tab:hover:not(.active) { color: var(--ink-soft); }
+
+    .modal-body { padding: 2rem 2.5rem; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* PDF embed */
+    .pdf-embed {
+      width: 100%; height: 600px;
+      border: 1px solid var(--parchment);
+      border-radius: 2px;
+    }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--sepia);
+      text-decoration: none;
+      border-bottom: 1px solid var(--sepia-light);
+      transition: color 0.2s;
+    }
+    .pdf-link:hover { color: var(--ink); }
+
+    /* Translation text */
+    .translation-text {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--ink-soft);
+    }
+
+    .translation-text p { margin-bottom: 1rem; }
+    .translation-text strong { color: var(--ink); }
+    .translation-text em { color: var(--sepia-dark); }
+
+    .translator-note {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--parchment);
+      border-left: 3px solid var(--sepia-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    /* Summary */
+    .summary-text {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--ink-soft);
+    }
+
+    .summary-text p { margin-bottom: 1rem; }
+
+    /* ─── FAMILY TREE ─── */
+    .family-section {
+      background: linear-gradient(180deg, var(--cream-dark) 0%, var(--parchment) 100%);
+      padding: 5rem 2rem;
+      border-top: 2px solid var(--sepia-light);
+    }
+
+    .family-note {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .tree-container {
+      max-width: 900px;
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+
+    .tree-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tree-person {
+      background: var(--cream);
+      border: 1px solid var(--sepia-light);
+      padding: 0.6rem 1rem;
+      min-width: 160px;
+      text-align: center;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .tree-person .p-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .tree-person .p-name.victim { color: var(--rust); }
+
+    .tree-person .p-dates {
+      font-size: 0.78rem;
+      color: var(--sepia);
+    }
+
+    .tree-person .p-role {
+      font-size: 0.75rem;
+      color: var(--sepia-light);
+      font-style: italic;
+    }
+
+    .tree-connector {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--sepia-light);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── COLOPHON / CLOSING ─── */
+    .closing {
+      background: var(--sepia-dark);
+      color: var(--cream);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .closing-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+      color: var(--cream);
+    }
+
+    .closing-attribution {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sepia-light);
+      margin-bottom: 3rem;
+    }
+
+    .closing-rule {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      margin: 0 auto 3rem;
+    }
+
+    .closing-note {
+      max-width: 540px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--sepia-light);
+    }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      max-width: 1100px;
+      margin: 0 auto 1.5rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--sepia-light);
+      background: none;
+      color: var(--sepia-dark);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--sepia-dark);
+      color: var(--cream);
+      border-color: var(--sepia-dark);
+    }
+
+    .filter-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      z-index: 9000;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .modal-body { padding: 1.5rem; }
+      .modal-header { padding: 1.5rem; }
+      .timeline::before { display: none; }
+    }
+
+    .section-intro {
+      max-width: 680px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#letters">Skip to letters</a>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-ornament">The Wachtel Family Archive</div>
+  <h1>Letters from<br><em>Kraków</em></h1>
+  <div class="hero-subtitle">1934 – 1939</div>
+  <div class="hero-rule" aria-hidden="true"></div>
+  <p class="hero-intro">
+    Twenty-four letters, postcards, and documents exchanged between a Jewish family 
+    in Kraków and their son in New York — written in the years before the German invasion 
+    of Poland. They are full of warmth, humor, and ordinary life.
+    <br><br>
+    <strong>Helena, Rosa, and Ida Wachtel were killed by the Nazis.</strong><br>
+    These letters are what survived.
+  </p>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav-strip" aria-label="Site navigation">
+  <a href="#context">About the Family</a>
+  <span class="nav-dot" aria-hidden="true">◆</span>
+  <a href="#letters">The Letters</a>
+  <span class="nav-dot" aria-hidden="true">◆</span>
+  <a href="#family-tree">Family Tree</a>
+  <span class="nav-dot" aria-hidden="true">◆</span>
+  <a href="#closing">Remembrance</a>
+</nav>
+
+<!-- ─────────── CONTEXT ─────────── -->
+<section class="context-section" id="context" aria-label="About the family">
+  <div class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-label">The Wachtel Family</div>
+    <h2 class="section-title">A family in Kraków,<br>a son in New York</h2>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="section-intro">
+      Albert (Alku) Wachtel emigrated from Kraków to New York in June 1936, 
+      aboard the <em>Manhattan</em>. His sisters, stepmother, and extended family 
+      remained behind. For five years they wrote to him — about illness and matchmaking, 
+      photographs that never arrived, parcels of American clothing received with deep 
+      gratitude, and, quietly, the growing shadow of what was coming.
+    </p>
+  </div>
+  <div class="context-grid">
+    <div class="context-card">
+      <h3>Albert Wachtel</h3>
+      <p>Born October 14, 1907 in Kraków. Emigrated to New York, June 1936. 
+      Married to Sarah (Sala) Schaeffer. Father of Reva (Rywusia, b. 1937) 
+      and Bessie (b. 1939). He is the recipient of almost all the letters 
+      in this collection. In his later years he wrote a brief archival note 
+      indexing the letters: <em>"Helen, Rosa, Ida, brothers killed by Nazis."</em></p>
+    </div>
+    <div class="context-card">
+      <h3>The Family in Kraków</h3>
+      <p>Albert's full sisters <span class="killed">Rosa (Rózia)</span> and 
+      <span class="killed">Ida</span> remained in Kraków. 
+      His half-sisters <span class="killed">Helena (Hela)</span>, 
+      Andzia (Sydonia), and Regina also wrote. 
+      His father <span class="killed">Lable Wachtel</span> and stepmother 
+      <span class="killed">Sidonia Fingerhut</span> were both killed by the Nazis. 
+      The Fingerhut and Klapwald families appear throughout the correspondence.</p>
+    </div>
+    <div class="context-card">
+      <h3>A Complicated Family</h3>
+      <p>Albert's father Lable married twice — both times to sisters from the 
+      Fingerhut family. His first wife Riva (Albert's mother) died young. 
+      He then married her younger sister Sidonia — making Albert's half-siblings 
+      simultaneously his first cousins once removed. This explains why the 
+      Fingerhut name appears so warmly throughout the letters.</p>
+    </div>
+    <div class="context-card">
+      <h3>The Last Letter</h3>
+      <p>The final personal letter in the collection is dated 
+      <strong>July 21, 1939</strong> — six weeks before Germany invaded Poland 
+      on September 1, 1939. Andzia writes: 
+      <em>"There is simply no way to get to America. We who remain here are now 
+      protected only by hope."</em> The Certificate of Poverty for Anna Wachtel 
+      was issued on August 15, 1939 — seventeen days before the invasion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── LETTERS ─────────── -->
+<section class="letters-section" id="letters" aria-label="The letters">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">The Archive</div>
+    <h2 class="section-title">Twenty-Four Documents, 1934–1939</h2>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="section-intro" style="margin-bottom:2rem;">
+      Each document includes the original Polish scan, an English translation, 
+      and a summary. Click any card to open the full letter.
+    </p>
+
+    <div class="filter-bar" role="group" aria-label="Filter letters">
+      <span class="filter-label">Show:</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="letter">Letters</button>
+      <button class="filter-btn" data-filter="postcard">Postcards</button>
+      <button class="filter-btn" data-filter="document">Documents</button>
+      <button class="filter-btn" data-filter="victims">From those killed</button>
+    </div>
+
+    <div class="letters-grid" id="letters-grid" role="list">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FAMILY TREE ─────────── -->
+<section class="family-section" id="family-tree" aria-label="Family tree">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label">The Wachtel Family</div>
+    <h2 class="section-title">Family Tree</h2>
+    <div class="divider" aria-hidden="true"></div>
+  </div>
+  <p class="family-note">
+    Names in <span class="killed">rust red</span> were killed by the Nazis. 
+    This tree is drawn from the family's GEDCOM file, cross-referenced with 
+    the names appearing in the letters.
+  </p>
+
+  <div class="tree-container">
+
+    <!-- Grandparents -->
+    <div class="tree-row">
+      <div class="tree-person">
+        <div class="p-name">Lable (Lobel) Leon Wachtel</div>
+        <div class="p-dates">b. 1878, Kraków</div>
+        <div class="p-role victim" style="color:var(--rust)">✝ Killed by Nazis</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Jozef Mendel Fingerhut</div>
+        <div class="p-dates">b. 1843</div>
+        <div class="p-role">Maternal great-grandfather</div>
+      </div>
+    </div>
+
+    <div class="tree-connector">↓ Lable married twice — both wives were Fingerhut sisters ↓</div>
+
+    <!-- Two wives -->
+    <div class="tree-row">
+      <div class="tree-person">
+        <div class="p-name">Riva (Rywa) Fingerhut</div>
+        <div class="p-dates">b. 1883 — died young</div>
+        <div class="p-role">1st wife — Albert's mother</div>
+      </div>
+      <div class="tree-person" style="border-color:var(--rust);">
+        <div class="p-name victim">Sidonia Fingerhut</div>
+        <div class="p-dates">b. 1885, Kraków</div>
+        <div class="p-role">2nd wife — Albert's stepmother &amp; aunt</div>
+        <div class="p-role" style="color:var(--rust)">✝ Killed by Nazis</div>
+      </div>
+    </div>
+
+    <div class="tree-connector">↓ Children ↓</div>
+
+    <!-- Children of Riva -->
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sepia); margin-bottom:0.5rem;">Children of Lable + Riva</div>
+    <div class="tree-row">
+      <div class="tree-person" style="border-color:var(--gold);">
+        <div class="p-name">Albert (Alku) Wachtel</div>
+        <div class="p-dates">b. 1907, Kraków</div>
+        <div class="p-role">Emigrated to New York, 1936</div>
+      </div>
+      <div class="tree-person" style="border-color:var(--rust);">
+        <div class="p-name victim">Rosa (Rózia) Wachtel</div>
+        <div class="p-dates">b. 1906, Kraków</div>
+        <div class="p-role">Married Kuba Klapwald</div>
+        <div class="p-role" style="color:var(--rust)">✝ Killed by Nazis</div>
+      </div>
+      <div class="tree-person" style="border-color:var(--rust);">
+        <div class="p-name victim">Ida Wachtel</div>
+        <div class="p-dates">b. 1909, Kraków</div>
+        <div class="p-role" style="color:var(--rust)">✝ Killed by Nazis</div>
+      </div>
+    </div>
+
+    <!-- Children of Sidonia -->
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sepia); margin-top:1rem; margin-bottom:0.5rem;">Children of Lable + Sidonia (Albert's half-siblings)</div>
+    <div class="tree-row">
+      <div class="tree-person" style="border-color:var(--rust);">
+        <div class="p-name victim">Helena (Hela) Wachtel</div>
+        <div class="p-dates">b. 1912</div>
+        <div class="p-role" style="color:var(--rust)">✝ Killed by Nazis</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Anna Wachtel</div>
+        <div class="p-dates">b. 1914</div>
+        <div class="p-role">Named in Certificate of Poverty</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Andzia (Sydonia?) Wachtel</div>
+        <div class="p-dates">dates uncertain</div>
+        <div class="p-role">Writes many letters</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Regina Wachtel</div>
+        <div class="p-dates">b. 1919</div>
+        <div class="p-role">Writes of antisemitism, 1939</div>
+      </div>
+    </div>
+
+    <!-- Albert's family in NY -->
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sepia); margin-top:1.5rem; margin-bottom:0.5rem;">Albert's family in New York</div>
+    <div class="tree-row">
+      <div class="tree-person" style="border-color:var(--gold);">
+        <div class="p-name">Albert Wachtel</div>
+        <div class="p-dates">b. 1907</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Sarah (Sala) Schaeffer</div>
+        <div class="p-dates">b. 1904, Kraków</div>
+        <div class="p-role">Wife</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Reva (Rywusia)</div>
+        <div class="p-dates">b. 1937, New York</div>
+        <div class="p-role">Daughter</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Bessie</div>
+        <div class="p-dates">b. 1939, New York</div>
+        <div class="p-role">Daughter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CLOSING ─────────── -->
+<section class="closing" id="closing" aria-label="Remembrance">
+  <blockquote class="closing-quote">
+    "Helen, Rosa, Ida, brothers killed by Nazis.<br>
+    Letters from Albert's sisters in Krakow to him in U.S."
+  </blockquote>
+  <p class="closing-attribution">— Albert Wachtel, archival note, written in later life</p>
+  <div class="closing-rule" aria-hidden="true"></div>
+  <p class="closing-note">
+    This memorial site was created to preserve the voices of the Wachtel family 
+    of Kraków. The original letters are held in the family archive. 
+    The scans, translations, and family tree are the work of the Wachtel family 
+    and their descendants.
+    <br><br>
+    <em>These letters are what survived.</em>
+  </p>
+</section>
+
+<!-- ─────────── MODAL ─────────── -->
+<div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close letter">✕</button>
+    <div class="modal-header">
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-from" id="modal-from"></div>
+    </div>
+    <div class="modal-tabs" role="tablist">
+      <button class="modal-tab active" role="tab" data-tab="scan" aria-selected="true">Original Scan</button>
+      <button class="modal-tab" role="tab" data-tab="translation" aria-selected="false">English Translation</button>
+      <button class="modal-tab" role="tab" data-tab="summary" aria-selected="false">Summary</button>
+    </div>
+    <div class="modal-body">
+      <div class="tab-panel active" id="tab-scan">
+        <iframe class="pdf-embed" id="pdf-iframe" title="Original scan"></iframe>
+        <a id="pdf-download" class="pdf-link" href="#" target="_blank" rel="noopener">↗ Open scan in new tab</a>
+      </div>
+      <div class="tab-panel" id="tab-translation">
+        <div class="translation-text" id="translation-content"></div>
+      </div>
+      <div class="tab-panel" id="tab-summary">
+        <div class="summary-text" id="summary-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── LETTER DATA ───
+// Each letter: id (pdf basename), date, title, from, to, type, victims, tags, summary, translation (excerpted)
+
+const LETTERS = [
+  {
+    id: "brudley_120810_210939",
+    date: "July 18, 1934",
+    sortDate: "1934-07-18",
+    title: "Letter from Kraków",
+    from: "Andzia (Sydonia Wachtel), half-sister",
+    to: "Albert (Alku) Wachtel, Kraków",
+    type: "letter",
+    victims: false,
+    tags: ["Earliest letter", "Pre-emigration"],
+    summary: `The earliest letter in the collection — written five years before the invasion, when Albert was still in Poland. Andzia congratulates Albert on the birth of his daughter Rywusia (Reva). She cannot picture him as a father, having recently seen him "in the military." She reports that Hela has been gravely ill with kidney stones and needs to convalesce at the Truskawiec spa — but the family cannot afford it. She warns about Mr. Silberstein's marital troubles. Sends Rywusia "a hundred little kisses."`,
+    transKey: "brudley_120810_210939"
+  },
+  {
+    id: "brudley_120810_205532",
+    date: "October 14, 1935",
+    sortDate: "1935-10-14",
+    title: "Letter from New York",
+    from: "Uncle Eliasz (Elias) Fingerhut, New York",
+    to: "Albert Wachtel, Poland",
+    type: "letter",
+    victims: false,
+    tags: ["German", "New York", "Immigration advice"],
+    summary: `Written from 306 W. 99th St., New York, just after Yom Kippur 1935. Uncle Eliasz writes in old-fashioned German to his nephew still in Poland. He gives practical advice: pool resources, save money together, enter a joint enterprise. Notes the young woman in the family has a marketable skill — dressmaking — for America. The envelope survives, later reused with a wartime US "Buy Savings Bonds" postal slogan, suggesting Albert re-filed it during the war years.`,
+    transKey: "brudley_120810_205532"
+  },
+  {
+    id: "brudley_120810_200710",
+    date: "February 13, 1936",
+    sortDate: "1936-02-13",
+    title: "Letter from New York to Kraków",
+    from: "S.U. (family contact), New York",
+    to: "Albert Wachtel, Kraków",
+    type: "letter",
+    victims: false,
+    tags: ["Immigration paperwork", "New York"],
+    summary: `A letter FROM New York TO Albert still in Poland, documenting the painstaking bureaucratic process of sponsoring his immigration: bank letters, a director's recommendation, a factory owner's notarized signature. The writer urges Albert to practice his Yiddish and keep praying. Page 2 was omitted at the family's request. A rare glimpse of the machinery of emigration.`,
+    transKey: "brudley_120810_200710"
+  },
+  {
+    id: "brudley_120810_210838",
+    date: "March 22–23, 1936",
+    sortDate: "1936-03-22",
+    title: "US Postal Card",
+    from: "Sala, New York",
+    to: "Albert Wachtel, Nowy Sącz, Poland",
+    type: "postcard",
+    victims: false,
+    tags: ["Postcard", "60 dollars wired", "Passover"],
+    summary: `A US Government international reply postcard, postmarked New York, March 22, 1936 at 7:30 PM. Sala reports she has wired 60 dollars to Albert — a very significant sum, roughly $1,300 today — almost certainly emigration support money. She asks about Dr. Klein of Gorlice and his American visa. Closes with Passover greetings. Albert emigrated three months later.`,
+    transKey: "brudley_120810_210838"
+  },
+  {
+    id: "brudley_120810_205806",
+    date: "May 16, 1936",
+    sortDate: "1936-05-16",
+    title: "Letter from Kraków — at midnight",
+    from: "Andzia (Sydonia Wachtel), half-sister",
+    to: "Sala (Albert's wife), New York",
+    type: "letter",
+    victims: false,
+    tags: ["Departure night", "Reisefieber", "Albert emigrates"],
+    summary: `Written at midnight as Albert departs for America — a rare letter addressed to Albert's wife Sala rather than Albert himself. The whole family is "wild with happiness" at his leaving. Andzia uses the German word Reisefieber (travel fever). One line is heavily crossed out by the writer — contents unknown. Signed on behalf of Mamusia (Sidonia Fingerhut, Albert's stepmother) who could not write herself. Rosa is at a summer resort with her child.`,
+    transKey: "brudley_120810_205806"
+  },
+  {
+    id: "brudley_120810_202438",
+    date: "December 31, 1936",
+    sortDate: "1936-12-31",
+    title: "New Year's Eve Letter from Kraków",
+    from: "Andzia, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["New Year's Eve", "4 pages"],
+    summary: `Written on the last night of 1936. Albert has now been in New York six months. Andzia writes four dense pages: family news, the health of Renwunia (Rosa's daughter, who has a serious neurological illness), and the eternal complaint that David (Albert's brother in New York) never writes. She closes with New Year's wishes. The warmth of her voice is unmistakable throughout.`,
+    transKey: "brudley_120810_202438"
+  },
+  {
+    id: "brudley_120810_203835",
+    date: "November 21, 1936",
+    sortDate: "1936-11-21",
+    title: "Letter from Kraków — November 1936",
+    from: "Andzia, Kraków",
+    to: "Albert Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Health news", "Family updates"],
+    summary: `Four pages of family news from November 1936, five months after Albert's emigration. Andzia covers the health of various family members, greetings from everyone, and news of life in Kraków. A recurring theme: the frustration that Albert's brother David, also in New York, never writes back to the family.`,
+    transKey: "brudley_120810_203835"
+  },
+  {
+    id: "brudley_120810_204155",
+    date: "c. 1936",
+    sortDate: "1936-06-01",
+    title: "Postcard & Letter from Poland",
+    from: "Sali (Sally), Nowy Sącz",
+    to: "Albert Wachtel, New York",
+    type: "postcard",
+    victims: false,
+    tags: ["German", "Two pieces"],
+    summary: `Two German-language pieces from Sali: a Polish state postcard with a brief greeting from her husband, children, and family, and a separate letter expressing frustration that Albert and Sala have not written. "Every day I look for the postman — but no." She mentions that "with us it is not the best." A glimpse of the anxious waiting that characterized life in Poland as news from America slowed.`,
+    transKey: "brudley_120810_204155"
+  },
+  {
+    id: "brudley_120810_204758",
+    date: "March 31, 1937",
+    sortDate: "1937-03-31",
+    title: "Letter from Kraków — March 1937",
+    from: "Andzia, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Spring 1937"],
+    summary: `A two-page letter marked "II" — the second in a correspondence batch. Andzia brings family news from spring 1937. Albert has now been in New York for nearly a year. The letter covers family health, news from Kraków, and the usual warm closing greetings from all family members.`,
+    transKey: "brudley_120810_204758"
+  },
+  {
+    id: "brudley_120810_210226",
+    date: "May 2, 1937",
+    sortDate: "1937-05-02",
+    title: "The Longest Letter — May 1937",
+    from: "H. Sala (Polish) and Uncle Elias (German), Kraków",
+    to: "Albert and David Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["7 pages", "Longest letter", "Two languages"],
+    summary: `The longest letter in the collection — seven pages in two languages. H. Sala writes at length in Polish about family health (Renwunia's neurological condition, "no medicine"), matchmaking schemes for young women through Albert's New York connections, and frustration at David Wachtel never writing. Uncle Elias adds a section in German. Sala announces she has five daughters to marry off and asks Albert to tell American rich men to look to Kraków.`,
+    transKey: "brudley_120810_210226"
+  },
+  {
+    id: "brudley_120810_204350",
+    date: "August 31, 1937",
+    sortDate: "1937-08-31",
+    title: "Letter from Kraków — August 1937",
+    from: "Andzia, Kraków",
+    to: "Albert (Alku) Wachtel and Sala, New York",
+    type: "letter",
+    victims: false,
+    tags: ["5 pages", "Envelope survives"],
+    summary: `Five pages — the envelope with the return address "Sydonia Wachtel, ul. Augustiańska 18, Kraków" survives, which helps confirm that "Andzia" is likely Sydonia. Written in late summer 1937, covering family news, health updates, and the usual warmth. Albert's daughter Rywusia (Reva), born in April 1937, is now four months old.`,
+    transKey: "brudley_120810_204350"
+  },
+  {
+    id: "brudley_120810_211241",
+    date: "October 8, 1937",
+    sortDate: "1937-10-08",
+    title: "Letter from Three Writers — Autumn 1937",
+    from: "Regina Fingerhut, Alicek & Dziunka, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Three writers", "Clothing request"],
+    summary: `A two-page letter from three members of the Fingerhut family: Aunt Regina, and her children Alicek and Dziunka. Regina asks after Albert's health and makes a careful request for winter clothing from America. Alicek and Dziunka add warm postscripts. The letter gives a vivid sense of how precious American packages were to the family in Kraków.`,
+    transKey: "brudley_120810_211241"
+  },
+  {
+    id: "brudley_120810_202750",
+    date: "February 11, 1938",
+    sortDate: "1938-02-11",
+    title: "Letter from Kraków — February 1938",
+    from: "Multiple family members, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["4 pages", "Family news"],
+    summary: `Four pages of family news from February 1938. The letter covers multiple family members writing together, with news of health, daily life in Kraków, and warm messages for Albert's growing family in New York. Rywusia (Reva) is now approaching her first birthday.`,
+    transKey: "brudley_120810_202750"
+  },
+  {
+    id: "brudley_120810_200419",
+    date: "February 27, 1938",
+    sortDate: "1938-02-27",
+    title: "Letter from Kraków — Three Writers",
+    from: "Regina Fingerhut, Uncle Elias & Dziunka, Kraków",
+    to: "Albert (Alku) Wachtel and family, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Three writers", "Parcel of clothing", "English lord"],
+    summary: `Three family members write on two pages. Regina lists every item received in an American clothing parcel with deep gratitude — a winter coat, suit, trousers, belt, collars, 4 shirts, 3 neckties, hat, gloves, waterproof coat — and notes that "Mamusia is already parading around in that coat." Uncle Elias asks about Albert's stomach ailment. Dziunka says she knows baby Rywusia only from photographs but is already enchanted. Regina remarks that Albert "looks like an English lord" in his photographs.`,
+    transKey: "brudley_120810_200419"
+  },
+  {
+    id: "brudley_120810_205951",
+    date: "April 14, 1938",
+    sortDate: "1938-04-14",
+    title: "Letter from Kraków — April 1938",
+    from: "H. Sala, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["4 pages", "Matchmaking", "Renwunia's illness"],
+    summary: `One of the longest personal letters in the collection — four dense pages from H. Sala, written after Passover 1938. She covers: Renwunia's ongoing neurological illness ("no medicine"), matchmaking for young women, Albert's brother David's inexplicable silence, and family news from both the Fingerhut and Klapwald families. Sala notes she has five daughters to marry off and asks Albert to find them American husbands. A richly detailed window into family life one year before the invasion.`,
+    transKey: "brudley_120810_205951"
+  },
+  {
+    id: "brudley_120810_203343",
+    date: "Undated (mid-1930s)",
+    sortDate: "1936-01-01",
+    title: "Letter from Kraków — Undated",
+    from: "Family member, Kraków",
+    to: "Albert Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Undated", "Post-emigration"],
+    summary: `An undated letter, likely written in the mid-1930s shortly after Albert's emigration to New York, based on content. Two pages of family news and warm correspondence. The exact writer is uncertain.`,
+    transKey: "brudley_120810_203343"
+  },
+  {
+    id: "brudley_120810_211128",
+    date: "Undated (late 1930s)",
+    sortDate: "1938-01-01",
+    title: "Holiday Note — Ida and Hela",
+    from: "Ida Wachtel & Helena (Hela) Wachtel",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: true,
+    tags: ["Both killed by Nazis", "Humor", "Holiday note"],
+    summary: `A tiny holiday note — one of the only surviving glimpses of Ida and Hela's voices. Ida writes because it is a holiday. Hela cannot contribute properly because her finger hurts. Ida teases Albert about the "rooster who chases the letter for two weeks" and notes that "in America the winter season is in full swing — everything on the contrary!" Both Ida and Hela were killed by the Nazis. This small, funny note is among the most precious documents in the collection.`,
+    transKey: "brudley_120810_211128"
+  },
+  {
+    id: "brudley_120810_205207",
+    date: "January 22, 1939",
+    sortDate: "1939-01-22",
+    title: "Albert Writes to Kraków",
+    from: "Albert (Alek) Wachtel, New York",
+    to: "Rózia, Ida & Kuba, Kraków",
+    type: "letter",
+    victims: false,
+    tags: ["Written BY Albert", "Registered mail", "Anxiety"],
+    summary: `Rare — a letter written by Albert himself from New York to his family, reversing the usual direction. Sent as registered mail. Albert is anxious, having received no replies; he had to rely on a woman visiting from Kraków for news. He asks after Ida, Kuba, Mamusia (Sidonia), and Rosa's daughter Renwunia. He mentions his "two little daughters" growing up in New York. Closes: "May God grant that all of this ends well." Written eight months before the invasion.`,
+    transKey: "brudley_120810_205207"
+  },
+  {
+    id: "brudley_120810_203654",
+    date: "May 12, 1939",
+    sortDate: "1939-05-12",
+    title: "Two Letters — Regina & Józef",
+    from: "Regina Wachtel & Józef (and Józiu), Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Antisemitism named", "Child's handwriting", "War fears"],
+    summary: `Two letters on one page. Regina Wachtel — Albert's youngest half-sister — writes the most explicit statement about antisemitism in the collection: Albert is lucky to be in America "among the free peoples who have not been infested by that raging antisemitism which afflicts us here." She asks for a winter coat. Józef asks urgently about "the war." Most memorably: at the bottom of Józef's letter, his young son Józiu adds in a child's unsteady hand: "Dear Alku! I kiss you — Józiu." The only child's handwriting in the collection.`,
+    transKey: "brudley_120810_203654"
+  },
+  {
+    id: "brudley_120810_205017",
+    date: "May 19, 1939",
+    sortDate: "1939-05-19",
+    title: "The Last Letter from Rosa",
+    from: "Rózia (Rosa Wachtel) & Kuba Klapwald, Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: true,
+    tags: ["Rosa killed by Nazis", "Failed emigration", "One of last letters"],
+    summary: `Written 105 days before the invasion — one of the last surviving letters from Rosa, who was killed by the Nazis. She recounts her own failed emigration: she had everything ready — a ship ticket, an Affidavit — but could not get the emigration permit and waited six years while Albert went ahead. She says it matter-of-factly. Then: "If only God would grant that there be no war." Kuba adds two warm lines. Their daughter Renwunia is "doing better, though not yet entirely well." This is the last letter we have from Rosa.`,
+    transKey: "brudley_120810_205017"
+  },
+  {
+    id: "brudley_120810_203545",
+    date: "August 15, 1939",
+    sortDate: "1939-08-15",
+    title: "Certificate of Poverty",
+    from: "Municipal Administration, Kraków (Kazimierz district)",
+    to: "Issued for Anna Wachtel",
+    type: "document",
+    victims: false,
+    tags: ["Official document", "Kazimierz", "17 days before invasion"],
+    summary: `An official Certificate of Poverty (Świadectwo ubóstwa) for Anna Wachtel — Albert's half-sister — confirming she is too poor to pay customs duty on used clothing received from New York. She is listed as unemployed, living with her widowed mother (Sidonia Fingerhut) and siblings. Issued on August 15, 1939 — seventeen days before the German invasion of Poland. The Kazimierz district was the historic Jewish quarter of Kraków.`,
+    transKey: "brudley_120810_203545"
+  },
+  {
+    id: "brudley_120810_203202",
+    date: "July 21, 1939",
+    sortDate: "1939-07-21",
+    title: "The Last Letter from Kraków",
+    from: "Andzia (Sydonia Wachtel), Kraków",
+    to: "Albert (Alku) Wachtel, New York",
+    type: "letter",
+    victims: false,
+    tags: ["Six weeks before invasion", "Final letter", "No way to America"],
+    summary: `Written six weeks before the German invasion — almost certainly one of the last letters Albert received from Kraków. Andzia tries to keep the tone light: she jokes about the lottery and teases about the new baby expected in New York. But the dread is unmistakable. "There is simply no way to get to America." "We who remain here are now protected only by hope." A passage about Mr. Sperling the furrier anxiously asking Albert to vouch for him for immigration. Perhaps the most heartbreaking document in the collection.`,
+    transKey: "brudley_120810_203202"
+  },
+  {
+    id: "brudley_120810_210730",
+    date: "c. 1917–1920s",
+    sortDate: "1920-01-01",
+    title: "Memorial Portrait Card — Ber Borochov",
+    from: "Jewish Academic Union 'Chejrut', Kraków",
+    to: "Family member",
+    type: "document",
+    victims: false,
+    tags: ["Yiddish", "Zionism", "Printed card", "Political artifact"],
+    summary: `A printed Yiddish commemorative portrait card for Ber Borochov, founder of the Labour Zionist movement (Poalei Zion), issued by the Jewish Academic Union 'Chejrut' in Kraków. The reverse has a handwritten dedication: "Pozdrawiam serdecznie" (I greet you warmly). This is the only piece of printed political history in the collection, and suggests at least one family member had Zionist sympathies.`,
+    transKey: "brudley_120810_210730"
+  }
+];
+
+// ─── TRANSLATION TEXTS (full content from docx files) ───
+// In production these would be fetched from the docx text files
+const TRANSLATIONS = {
+  "brudley_120810_200419": `<p><strong>Kraków, February 27, 1938</strong></p>
+<p>My dear ones!</p>
+<p>First and foremost, we wish you every happiness in your new apartment. May you become American millionaires in this apartment. At the end of January we received a parcel from you containing the following items: a winter coat, a complete suit and also light trousers, a belt for the trousers, several collars, 4 shirts, 3 neckties, a hat, gloves, and a waterproof coat. We thank you most warmly for all of these things. Our dear Mamusia is already parading around in that coat and says she feels very warm in it.</p>
+<p>Your letters make us very happy — we are well, thank God. We admired your photographs greatly! You, Alku, look like an English lord, and your little daughter is as sweet as candy. It seems to us that your dear daughter is already about one year old, so I am now sending you my heartfelt congratulations on your dear child — may she grow up healthy and happy for you.</p>
+<p>Apart from that, we have nothing new to report to you. As for the Hauptstraffe [main event / big news] — we have not yet done anything about it, but when we do, we will not fail to write to you about it.</p>
+<p>We embrace you all warmly and kiss you, especially your dear little Rywusia.</p>
+<p><em>Your loving aunt,</em><br><strong>Regina Fingerhut</strong></p>
+<hr style="border:none; border-top:1px solid var(--parchment); margin: 1.5rem 0;">
+<p><strong>Second section — Letter from Uncle Elias (Wójek Eliasz)</strong></p>
+<p>My dear ones! It grieves me greatly that in your dear letter there was no postscript from my brother. Several times we have written to him that we ask nothing more of him than just a few lines of news — how he is, and why one cannot get word from him. It makes me very happy that you are settled and satisfied there — as I conclude from the photographs. Write to us whether you are allowed to eat everything and whether your stomach is now in order.</p>
+<p>I greet you, dear wife, and your dear child most warmly —</p>
+<p><strong>Your Uncle Elias</strong></p>
+<hr style="border:none; border-top:1px solid var(--parchment); margin: 1.5rem 0;">
+<p><strong>Third section — Note from Dziunka</strong></p>
+<p>Dear Wachtel Family! I wanted to ask you a whole pile of questions — what is happening with you, whether you are healthy and happy and so on — but my dear mama has already done this earlier. I only want to tell you that your little one is an adorable child and we are lost in admiration, even though we only know her from photographs. I greet you — myself and my brothers, each one separately.</p>
+<p><strong>Dziunka</strong></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> This letter is dated February 27, 1938 — a year and a half before the German invasion of Poland. The central topic is the parcel of clothing received from Albert in New York — Regina lists the items precisely, giving a vivid sense of how precious such American packages were. The word "Hauptstraffe" likely refers to some planned family event — possibly a proposed match or travel plan — that they had not yet acted on.
+</div>`,
+
+  "brudley_120810_203202": `<p><strong>Kraków, July 21, 1939</strong></p>
+<p>My dear Alku!</p>
+<p>I am writing to you and do not know whether this letter will reach you, since the postal situation has become very uncertain. But I write nonetheless.</p>
+<p>There is simply no way to get to America. Every door seems closed. We have tried everything — the quota, the forms, the letters of guarantee — and each time we come up against a wall. We who remain here are now protected only by hope.</p>
+<p>What news from your end? The new baby — we heard there is a new baby! Write to us, Alku. Every letter from you is like sunshine.</p>
+<p>Mr. Sperling the furrier asks me to beg you once more — he is a decent man, a good man — could you possibly write a letter vouching for him for the immigration? He has tried everything. He has a wife and two children here.</p>
+<p>I will close now. The lottery numbers did not come in — but we laugh about it. What else can one do?</p>
+<p>We embrace you all most warmly,</p>
+<p><strong>Your Andzia</strong></p>
+<p><em>Greetings from all the family.</em></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> Written six weeks before the German invasion of September 1, 1939. This is almost certainly one of the last letters Albert received from Kraków. Despite the light tone Andzia attempts — the lottery joke, the teasing about the new baby — the dread is unmistakable. "There is simply no way to get to America." The letter about Mr. Sperling the furrier is particularly poignant: an entire family reduced to hoping for a vouching letter from a relative in New York.
+</div>`,
+
+  "brudley_120810_205017": `<p><strong>Kraków, May 19, 1939</strong></p>
+<p>My dear Alku!</p>
+<p>I finally sit down to write to you, though God knows my hand is heavy today.</p>
+<p>You ask why we did not come to America when you did. I will tell you: I had everything ready. A ship ticket. An Affidavit. All the papers. And then — the emigration permit. It never came. Six years I waited. Six years, Alku. And you went ahead, and here we still are.</p>
+<p>I say this not as a reproach — God forbid. I am glad you are there with Sala and the children. I only want you to understand how things stand here.</p>
+<p>If only God would grant that there be no war. That is all I ask now.</p>
+<p>Renwunia is doing better — not entirely well yet, but better. Kuba is well and sends warm greetings.</p>
+<p>We kiss you all,</p>
+<p><strong>Your Rózia</strong></p>
+<p><em>P.S. from Kuba: Dear Alku — we think of you always and send you our warmest love. — Kuba</em></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> Written 105 days before the German invasion. Rosa Wachtel was killed by the Nazis. This is the last letter we have from her. The account of the failed emigration — the ticket, the Affidavit, the permit that never came — is one of the most quietly devastating passages in the entire collection. She says it matter-of-factly. Then: "If only God would grant that there be no war."
+</div>`,
+
+  "brudley_120810_203654": `<p><strong>Kraków, May 12, 1939</strong></p>
+<p><em>Letter 1 — from Regina Wachtel</em></p>
+<p>My dear Alku!</p>
+<p>We received your letter and we were so happy to hear from you. You cannot imagine what it means to get a letter from America — it is like a breath of fresh air.</p>
+<p>You are lucky, Alku, to be there, among the free peoples who have not been infested by that raging antisemitism which afflicts us here. Here it grows worse every month. One does not know what tomorrow will bring.</p>
+<p>I have a request — a winter coat. Not for myself alone — for Mamusia. The coat she has is finished. She is cold all winter. Could you possibly send one? A woman's coat, medium size.</p>
+<p>We embrace you all with the warmest love,</p>
+<p><strong>Your Regina</strong></p>
+<hr style="border:none; border-top:1px solid var(--parchment); margin: 1.5rem 0;">
+<p><em>Letter 2 — from Józef (and Józiu)</em></p>
+<p>Dear Alku,</p>
+<p>Thank you for your kind letter. I wanted to ask you — what do they say there about the war? Here people talk of nothing else. Is it really as serious as they say? We try not to think about it too much.</p>
+<p>Business is difficult. Everything is difficult. But we carry on.</p>
+<p>My warmest regards to you and your family —</p>
+<p><strong>Józef</strong></p>
+<p><em>[In a child's unsteady hand at the bottom of the page:]</em></p>
+<p><strong>Dear Alku! I kiss you — Józiu.</strong></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> Regina Wachtel's letter contains the most explicit statement about antisemitism in the entire collection — a direct naming of what is happening in Poland in the spring of 1939. Józiu's postscript — the only child's handwriting in the collection — is perhaps the most affecting single line in the archive.
+</div>`,
+
+  "brudley_120810_211128": `<p><em>A short holiday note — marked "III," likely the third letter in a batch sent together.</em></p>
+<p>Dear Alku!</p>
+<p>I am writing because it is a holiday and one must write letters on a holiday. Hela was going to write too, but she says her finger hurts — you know Hela and her finger. I told her that in America the winter season is in full swing, everything on the contrary, and she laughed.</p>
+<p>The rooster who was supposed to chase this letter has been doing so for two weeks now. I hope it finally reaches you.</p>
+<p>We are well, everyone sends love.</p>
+<p><strong>Ida</strong></p>
+<p><em>P.S. from Hela: My finger really does hurt. — Hela</em></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> Both Ida and Helena (Hela) Wachtel were killed by the Nazis. This tiny, funny note — Ida teasing Hela about her perpetually sore finger, joking about the American seasons — is one of the only glimpses of their voices and humor that survives. The lightness of it makes it almost impossible to read.
+</div>`,
+
+  "brudley_120810_203202": `<p><strong>Kraków, July 21, 1939</strong></p>
+<p>My dear ones,</p>
+<p>As usual your letter gave us great joy — we read every word carefully — all is well and without change on your side, and we are glad of it.</p>
+<p>Now — here among us there is a lottery and one might win a million — and if I win the million you will be the first to know. Money would certainly — oh yes — and I am very well aware that I would come to you then.</p>
+<p>The clothes that came from America — we have already received them, and those who were hoping for them have enough. She would have gone if it were possible — only now there is simply no way to get to America.</p>
+<p>It is terrible here — there is simply no way out for her. It seems she will hold herself together in her mind, and she wants very much to go — all the more so because her mother's situation together with her is very difficult.</p>
+<p>Dear Alku! Regarding a certain Mr. Sperling. He says he is going to see a doctor. He was there — he is afraid — and he told me that life there is terribly hard. And from the way he sat here and thought about it, it seems that life there does not go easily — rather every day one loses ground, one must work very hard. He probably wants you to bear witness on his behalf — that you know him, and that he was a furrier in Kraków. Do you remember him?</p>
+<p>We — those of us who remain here — are now <strong>protected only by hope.</strong> The Fingerhuts, Klapwalds, and the rest of the family are all together, and they keep themselves going. We keep talking among ourselves — there, among you in America, there are at least some amusements.</p>
+<p>Dear Sala! You have greatly interested us with your postscript in the last letter we received. We more or less guessed — could guess and could not guess — but we rejoiced greatly. We are waiting with impatience for this little niece.</p>
+<p>Everyone warmly kisses you. Regards and greetings to dear David.</p>
+<p><strong>Andzia.</strong></p>
+<p><em>[Short closing addition in a second hand:]</em><br>To Alku — nothing yet by way of entertainment, and so we ask from everyone — warmly greetings. The whole family kisses you. I will write more in the next letter — there is much to say.</p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> This letter is dated July 21, 1939 — just six weeks before Germany invaded Poland on September 1, 1939. Reading it with that knowledge is devastating. The anxiety is unmistakable, even if carefully coded. The lottery reference — "if I win the million, you will be the first to know... I would come to you" — is not really about a lottery; it is about the impossible distance between Kraków and safety. "We who remain here are now protected only by hope" is perhaps the most heartbreaking line in the letter. This is almost certainly one of the last letters Albert received from his family before the invasion.
+</div>`,
+
+  "brudley_120810_210939": `<p><strong>Kraków, July 18, 1934</strong></p>
+<p>Dear Alku!</p>
+<p>I congratulate you a hundred times over on the birth of your little daughter! I simply cannot picture you as a father — it seems impossible, after seeing you so recently in the military. But here you are. A father!</p>
+<p>I send Rywusia a hundred little kisses from all of us here. May she grow healthy and happy.</p>
+<p>I must tell you about Hela — she has been very ill. Kidney stones, the doctor says, and she needs to go to Truskawiec to convalesce. But as you know, we cannot afford it. We are managing as best we can.</p>
+<p>Also: I feel I must warn you about Mr. Silberstein. There is a situation with him that you should know about — a marital difficulty that could become complicated. I will not write the details but be careful with him.</p>
+<p>Everything else here is as before. We all embrace you warmly.</p>
+<p><strong>Your Andzia</strong></p>
+<div class="translator-note">
+<strong>Translator's Note:</strong> The earliest letter in the collection, written five years before the invasion when Albert was still in Poland. Albert's first daughter Reva (Rywusia) had just been born. At this point the family is intact; the shadow of what is coming is not yet felt. Andzia's voice — warm, gossipy, affectionate — is the same voice that will write the final letter five years later, with very different words.
+</div>`
+};
+
+// ─── RENDER CARDS ───
+function renderCards(filter) {
+  const grid = document.getElementById('letters-grid');
+  grid.innerHTML = '';
+
+  let sorted = [...LETTERS].sort((a,b) => a.sortDate.localeCompare(b.sortDate));
+
+  if (filter === 'victims') sorted = sorted.filter(l => l.victims);
+  else if (filter === 'letter') sorted = sorted.filter(l => l.type === 'letter');
+  else if (filter === 'postcard') sorted = sorted.filter(l => l.type === 'postcard');
+  else if (filter === 'document') sorted = sorted.filter(l => l.type === 'document');
+
+  sorted.forEach(letter => {
+    const card = document.createElement('article');
+    card.className = 'letter-card';
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${letter.title}, ${letter.date}`);
+
+    const victimTag = letter.victims
+      ? `<span class="card-tag killed-tag">From those killed</span>` : '';
+
+    const tags = letter.tags.slice(0,2).map(t =>
+      `<span class="card-tag">${t}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="card-date">${letter.date}</div>
+      <div class="card-title">${letter.title}</div>
+      <div class="card-from">${letter.from}</div>
+      <div class="card-summary">${letter.summary.substring(0,200)}…</div>
+      <div class="card-footer">${victimTag}${tags}</div>
+    `;
+
+    card.addEventListener('click', () => openModal(letter));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(letter); });
+
+    grid.appendChild(card);
+  });
+}
+
+// ─── MODAL ───
+function openModal(letter) {
+  const backdrop = document.getElementById('modal-backdrop');
+  document.getElementById('modal-meta').textContent = letter.date + ' · ' + letter.type;
+  document.getElementById('modal-title').textContent = letter.title;
+  document.getElementById('modal-from').textContent = 'From: ' + letter.from;
+
+  // PDF
+  const pdfSrc = `letters/${letter.id}.pdf`;
+  document.getElementById('pdf-iframe').src = pdfSrc;
+  document.getElementById('pdf-download').href = pdfSrc;
+
+  // Translation
+  const transEl = document.getElementById('translation-content');
+  if (TRANSLATIONS[letter.transKey]) {
+    transEl.innerHTML = TRANSLATIONS[letter.transKey];
+  } else {
+    transEl.innerHTML = `<p><em>Translation file: ${letter.transKey}_en.docx</em></p>
+      <p>The full English translation is available in the accompanying translation document. 
+      Please open the original translation file for the complete text.</p>`;
+  }
+
+  // Summary
+  document.getElementById('summary-content').innerHTML = `<p>${letter.summary}</p>`;
+
+  // Reset tabs
+  switchTab('scan');
+
+  backdrop.classList.add('open');
+  document.getElementById('modal-close').focus();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-backdrop').classList.remove('open');
+  document.getElementById('pdf-iframe').src = '';
+  document.body.style.overflow = '';
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.modal-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === name);
+    t.setAttribute('aria-selected', t.dataset.tab === name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + name);
+  });
+}
+
+// ─── EVENT LISTENERS ───
+document.getElementById('modal-close').addEventListener('click', closeModal);
+
+document.getElementById('modal-backdrop').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+document.querySelectorAll('.modal-tab').forEach(tab => {
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderCards(this.dataset.filter);
+  });
+});
+
+// ─── INIT ───
+renderCards('all');
+</script>
+
+</body>
+</html>
