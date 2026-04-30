@@ -720,7 +720,6 @@
     in Kraków and their son in New York — written in the years before the German invasion 
     of Poland. They are full of warmth, humor, and ordinary life.
     <br><br>
-    <strong>Helena, Rosa, and Ida Wachtel were killed by the Nazis.</strong><br>
     These letters are what survived.
   </p>
   <div class="hero-scroll" aria-hidden="true">Scroll</div>
@@ -964,16 +963,16 @@
       <div class="modal-from" id="modal-from"></div>
     </div>
     <div class="modal-tabs" role="tablist">
-      <button class="modal-tab active" role="tab" data-tab="scan" aria-selected="true">Original Scan</button>
-      <button class="modal-tab" role="tab" data-tab="translation" aria-selected="false">English Translation</button>
+      <button class="modal-tab" role="tab" data-tab="scan" aria-selected="false">Original Scan</button>
+      <button class="modal-tab active" role="tab" data-tab="translation" aria-selected="true">English Translation</button>
       <button class="modal-tab" role="tab" data-tab="summary" aria-selected="false">Summary</button>
     </div>
     <div class="modal-body">
-      <div class="tab-panel active" id="tab-scan">
+      <div class="tab-panel" id="tab-scan">
         <iframe class="pdf-embed" id="pdf-iframe" title="Original scan"></iframe>
         <a id="pdf-download" class="pdf-link" href="#" target="_blank" rel="noopener">↗ Open scan in new tab</a>
       </div>
-      <div class="tab-panel" id="tab-translation">
+      <div class="tab-panel active" id="tab-translation">
         <div class="translation-text" id="translation-content"></div>
       </div>
       <div class="tab-panel" id="tab-summary">
@@ -1907,7 +1906,7 @@ function openModal(letter) {
   document.getElementById('summary-content').innerHTML = `<p>${letter.summary}</p>`;
 
   // Reset tabs
-  switchTab('scan');
+  switchTab('translation');
 
   backdrop.classList.add('open');
   document.getElementById('modal-close').focus();
