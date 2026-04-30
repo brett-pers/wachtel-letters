@@ -592,6 +592,45 @@
       margin-bottom: 0.5rem;
     }
 
+    .tree-gen-label {
+      text-align:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.8rem;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--sepia);
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .tree-couple-connector {
+      align-self: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      color: var(--sepia-light);
+      letter-spacing: 0.1em;
+      padding: 0 0.25rem;
+    }
+
+    .tree-note-box {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      padding: 1rem 1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--sepia-light);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .tree-note-box strong {
+      display: block;
+      font-style: normal;
+      color: var(--sepia-dark);
+      margin-bottom: 0.25rem;
+    }
+
     /* ─── COLOPHON / CLOSING ─── */
     .closing {
       background: var(--sepia-dark);
@@ -716,15 +755,14 @@
   <div class="hero-subtitle">1934 – 1939</div>
   <div class="hero-rule" aria-hidden="true"></div>
   <p class="hero-intro">
-    Twenty-four letters, postcards, and documents exchanged between my maternal grandfather
-    Albert (Alku) Wachtel in New York and his family back in Krakow.  
-<br>
-    Albert died in 1964 
-    when I was 4 so I don't have many memories of him.
-<br>
+    Twenty-four letters, postcards, and documents exchanged between my maternal grandfather 
+    Albert (Alku) Wachtel in New York and his family back in Kraków.
+    <br><br>
+    Albert died in 1964 when I was 4, so I don't have many memories of him.
+    <br><br>
     I believe I got the letters from my mom but don't remember the exact circumstances. 
-    In 2014 I scanned them via a flatbed scanner. (Could just use my phone now!).
-    These are all the letters I have for now ... its possible there is more in my mom's stuff.
+    In 2014 I scanned them via a flatbed scanner. (Could just use my phone now!) 
+    These are all the letters I have for now&nbsp;… it's possible there is more in my mom's stuff.
   </p>
   <div class="hero-scroll" aria-hidden="true">Scroll</div>
 </section>
@@ -736,6 +774,8 @@
   <a href="#letters">The Letters</a>
   <span class="nav-dot" aria-hidden="true">◆</span>
   <a href="#family-tree">Family Tree</a>
+  <span class="nav-dot" aria-hidden="true">◆</span>
+  <a href="#descendants">Descendants</a>
   <span class="nav-dot" aria-hidden="true">◆</span>
   <a href="#closing">Remembrance</a>
 </nav>
@@ -913,30 +953,108 @@
       </div>
     </div>
 
-    <!-- Albert's family in NY -->
-    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sepia); margin-top:1.5rem; margin-bottom:0.5rem;">Albert's family in New York</div>
+    <!-- ══ GENERATION 1: Albert & Sarah ══ -->
+    <div id="descendants" style="padding-top:1rem;"></div>
+    <div class="tree-gen-label">Generation I — Albert &amp; Sarah in New York</div>
     <div class="tree-row">
       <div class="tree-person" style="border-color:var(--gold);">
-        <div class="p-name">Albert Wachtel</div>
-        <div class="p-dates">b. 1907</div>
+        <div class="p-name">Albert (Alku) Wachtel</div>
+        <div class="p-dates">b. 14 Oct 1907, Kraków · d. 1964</div>
+        <div class="p-role">Furrier · The letter writer</div>
       </div>
+      <div class="tree-couple-connector">m.</div>
       <div class="tree-person">
         <div class="p-name">Sarah (Sala) Schaeffer</div>
-        <div class="p-dates">b. 1904, Kraków</div>
-        <div class="p-role">Wife</div>
-      </div>
-      <div class="tree-person">
-        <div class="p-name">Reva (Rywusia)</div>
-        <div class="p-dates">b. 1937, New York</div>
-        <div class="p-role">Daughter</div>
-      </div>
-      <div class="tree-person">
-        <div class="p-name">Bessie</div>
-        <div class="p-dates">b. 1939, New York</div>
-        <div class="p-role">Daughter</div>
+        <div class="p-dates">b. 24 Apr 1904, Kraków · d. 8 May 1991</div>
+        <div class="p-role">From Kraków, emigrated 1931</div>
       </div>
     </div>
-  </div>
+
+    <div class="tree-connector">↓ Their children ↓</div>
+
+    <!-- ══ GENERATION 2: Reva & Bessie ══ -->
+    <div class="tree-gen-label">Generation II</div>
+    <div class="tree-row">
+      <div class="tree-person" style="border-color:var(--sepia);">
+        <div class="p-name">Reva Wachtel</div>
+        <div class="p-dates">b. 12 Apr 1937, New York · d. 23 Dec 2010</div>
+        <div class="p-role">The "Rywusia" of the letters</div>
+      </div>
+      <div class="tree-person" style="border-color:var(--sepia-light); opacity:0.75;">
+        <div class="p-name">Bessie Wachtel</div>
+        <div class="p-dates">b. 25 Jun 1939 · d. 5 Sep 1941</div>
+        <div class="p-role">Died age 2, leukemia</div>
+      </div>
+    </div>
+
+    <div class="tree-connector" style="margin-top:0.5rem;">↓ Reva married Arnold J. Rudley (b. 12 Mar 1936) ↓</div>
+    <div class="tree-row" style="margin-bottom:0.25rem;">
+      <div class="tree-person" style="min-width:200px; border-color:var(--sepia-light);">
+        <div class="p-name">Arnold J. Rudley</div>
+        <div class="p-dates">b. 12 Mar 1936, New York</div>
+        <div class="p-role">Son of Maurice &amp; Sadie Rudley</div>
+      </div>
+    </div>
+
+    <div class="tree-connector">↓ Their children ↓</div>
+
+    <!-- ══ GENERATION 3: Brett, Todd, Alyce ══ -->
+    <div class="tree-gen-label">Generation III</div>
+    <div class="tree-row">
+      <div class="tree-person" style="border-color:var(--gold); background:rgba(160,120,48,0.06);">
+        <div class="p-name" style="color:var(--gold);">Brett S. Rudley</div>
+        <div class="p-dates">b. 19 Dec 1960, Philadelphia</div>
+        <div class="p-role">Software Engineer · Santa Clara, CA</div>
+        <div class="p-role" style="font-style:normal; color:var(--gold); font-weight:600; margin-top:0.25rem;">◀ YOU</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Todd M. Rudley</div>
+        <div class="p-dates">b. 11 Oct 1963, Matawan NJ</div>
+        <div class="p-role">Briarcliff Manor, NY</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Alyce P. Rudley</div>
+        <div class="p-dates">b. 11 Apr 1967, Matawan NJ</div>
+        <div class="p-role">Matawan, NJ</div>
+      </div>
+    </div>
+
+    <div class="tree-connector">↓ Generation IV ↓</div>
+
+    <!-- ══ GENERATION 4: children of Brett & Todd ══ -->
+    <div class="tree-gen-label">Generation IV</div>
+
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sepia-light); margin-bottom:0.4rem;">Brett + Jane C. Scheidel (m. 1985)</div>
+    <div class="tree-row" style="margin-bottom:1.5rem;">
+      <div class="tree-person">
+        <div class="p-name">Matthew McKeon Rudley</div>
+        <div class="p-dates">b. 13 Jul 1991, Santa Clara CA</div>
+        <div class="p-role">Univ. of Wisconsin 2009–2013</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sepia-light); margin-bottom:0.4rem;">Todd + Lisa B. Platt (m. 1998)</div>
+    <div class="tree-row">
+      <div class="tree-person">
+        <div class="p-name">Alexa (Lexi) Rudley</div>
+        <div class="p-dates">b. 27 Oct 2000, New York</div>
+        <div class="p-role">Hebrew name: Shira Emuna</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Max Rudley</div>
+        <div class="p-dates">b. 25 Apr 2002, New York</div>
+      </div>
+      <div class="tree-person">
+        <div class="p-name">Derek Rudley</div>
+        <div class="p-dates">b. 9 Jan 2005, New York</div>
+      </div>
+    </div>
+
+    <div class="tree-note-box">
+      <strong>Name meanings from the GEDCOM:</strong> "Brett" comes from Reva's sister "B"essie · "Stuart" comes from Arnold's mother "S"ophie · "Todd" comes from grandma Taube · "Mitchell" comes from Maurice's father Max · "Alyce" comes from Reva's father Albert · "Paula" comes from Maurice's sister Pauline
+    </div>
+
+  </div><!-- /tree-container -->
 </section>
 
 <!-- ─────────── CLOSING ─────────── -->
